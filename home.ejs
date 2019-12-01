@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+  <h3><%= username %></h3>
+  <form action="logout" method="POST">
+    <input type="submit" value="Logout">
+  </form>
+  <hr />
+  My friends list:
+  <table>
+    <tr>
+      <th>Firstname</th>
+    </tr>
+    <% friendsList.forEach(function(friend) { %>
+    <tr>
+      <td><%= friend %></td>
+    </tr>
+    <% }); %>
+  </table>
+  <hr />
+  My Pending Friends Requests:
+  <table>
+    <tr>
+      <th>Firstname</th>
+      <th>Accept</th>
+    </tr>
+    <% pendingRequests.forEach(function(friend) { %>
+    <tr>
+      <td><%= friend %></td>
+      <td>
+        <form action="accept" method="POST">
+          <input type="hidden" name="friendname" value=<%= friend %>>
+          <input type="submit" value="Accept">
+        </form>
+      </td>
+    </tr>
+    <% }); %>
+  </table>
+  <hr />
+  Users in App:
+  <table>
+    <tr>
+      <th>Firstname</th>
+      <th>Make Friend</th>
+    </tr>
+    <% users.forEach(function(user) { %>
+    <tr>
+      <td><%= user %></td>
+      <td>
+        <form action="request" method="POST">
+          <input type="hidden" name="friendname" value=<%= user %>>
+          <input type="submit" value="Send Request">
+        </form>
+      </td>
+    </tr>
+    <% }); %>
+  </table>
+</body>
+
+</html>
